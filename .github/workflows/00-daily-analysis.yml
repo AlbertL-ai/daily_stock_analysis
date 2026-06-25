@@ -3,7 +3,7 @@ name: 每日股票分析
 on:
   # 定时触发 - 每个工作日北京时间 21:05 (UTC 13:05)
   schedule:
-    - cron: '5 13 * * 1-5'     # 周一到周五，UTC 13:05 = 北京时间 21:05
+    - cron: '0 13 * * 1-5'     # 周一到周五，UTC 13:05 = 北京时间 21:05
   
   # 手动触发
   workflow_dispatch:
@@ -36,7 +36,7 @@ jobs:
     
     steps:
       - name: 随机延迟（避免固定时间访问）
-        run: sleep $((RANDOM % 60))  # 随机延迟0-60秒启动
+        run: sleep $((RANDOM % 10))  # 随机延迟0-60秒启动
       
       - name: 检出代码
         uses: actions/checkout@v5
