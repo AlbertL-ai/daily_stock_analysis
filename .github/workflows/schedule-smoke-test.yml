@@ -1,0 +1,18 @@
+name: Schedule Smoke Test
+
+on:
+  schedule:
+    - cron: '45 15 * * 1-5'  # Beijing time 23:45, Mon-Fri
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print trigger context
+        run: |
+          echo "UTC time:"
+          date -u
+          echo "Beijing time:"
+          TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S %Z'
+          echo "Triggered by: ${{ github.event_name }}"

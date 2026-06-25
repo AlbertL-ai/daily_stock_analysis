@@ -1,9 +1,9 @@
 name: 每日股票分析
 
 on:
-  # 定时触发 - 每个工作日北京时间 21:05 (UTC 13:05)
+  # 定时触发 - 每周一至周五北京时间 23:10 (UTC 15:10)，程序内交易日检查会跳过非交易日
   schedule:
-    - cron: '0 13 * * 1-5'     # 周一到周五，UTC 13:05 = 北京时间 21:05
+    - cron: '0 13 * * 1-5'
   
   # 手动触发
   workflow_dispatch:
@@ -244,6 +244,7 @@ jobs:
           LONGBRIDGE_TRADE_WS_URL: ${{ vars.LONGBRIDGE_TRADE_WS_URL || secrets.LONGBRIDGE_TRADE_WS_URL }}
           LONGBRIDGE_STATIC_INFO_TTL_SECONDS: ${{ vars.LONGBRIDGE_STATIC_INFO_TTL_SECONDS || secrets.LONGBRIDGE_STATIC_INFO_TTL_SECONDS }}
           LONGBRIDGE_ENABLE_OVERNIGHT: ${{ vars.LONGBRIDGE_ENABLE_OVERNIGHT || secrets.LONGBRIDGE_ENABLE_OVERNIGHT }}
+          LONGBRIDGE_PRIORITY: ${{ vars.LONGBRIDGE_PRIORITY || secrets.LONGBRIDGE_PRIORITY || '5' }}
           LONGBRIDGE_PUSH_CANDLESTICK_MODE: ${{ vars.LONGBRIDGE_PUSH_CANDLESTICK_MODE || secrets.LONGBRIDGE_PUSH_CANDLESTICK_MODE }}
           LONGBRIDGE_PRINT_QUOTE_PACKAGES: ${{ vars.LONGBRIDGE_PRINT_QUOTE_PACKAGES || secrets.LONGBRIDGE_PRINT_QUOTE_PACKAGES }}
           
