@@ -2,8 +2,7 @@ name: 每日股票分析
 
 on:
   # 定时触发 - 每周一至周五北京时间 23:10 (UTC 15:10)，程序内交易日检查会跳过非交易日
-  schedule:
-    - cron: '0 13 * * 1-5'
+  # schedule: temporarily removed — will re-add
   
   # 手动触发
   workflow_dispatch:
